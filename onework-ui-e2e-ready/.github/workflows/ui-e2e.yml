@@ -1,0 +1,43 @@
+name: UI E2E
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  ui-e2e:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      # 打包 demo app 为 Windows exe
+      - name: Build demo app
+        run: npm run build:demo
+
+      # 用打包后的 exe 跑 E2E 测试
+      - name: Run E2E (packaged exe)
+        run: npx playwright test tests/e2e/packaged-app-launch.spec.ts --reporter=line,html
+
+      # 用开发模式跑 smoke 测试
+      - name: Run E2E (dev mode smoke)
+        env:
+          ELECTRON_MAIN_ENTRY: demo-electron-app/main.js
+        run: npx playwright test tests/e2e/smoke --reporter=line,html
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-report
+          path: |
+            playwright-report
+            test-results

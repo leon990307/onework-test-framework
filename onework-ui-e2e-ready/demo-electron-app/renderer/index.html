@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Onework Demo</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #f6f7fb;
+      }
+      .container {
+        max-width: 900px;
+        margin: 24px auto;
+        padding: 20px;
+      }
+      .card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      }
+      .hidden {
+        display: none;
+      }
+      h1 {
+        margin-top: 0;
+        font-size: 22px;
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+      input {
+        flex: 1;
+        padding: 10px 12px;
+        border: 1px solid #c9d1e0;
+        border-radius: 8px;
+      }
+      button {
+        border: 0;
+        border-radius: 8px;
+        padding: 10px 14px;
+        cursor: pointer;
+      }
+      .primary {
+        background: #2f6df6;
+        color: #fff;
+      }
+      .ghost {
+        background: #edf2ff;
+        color: #2f6df6;
+      }
+      .result {
+        margin-top: 10px;
+        min-height: 64px;
+        padding: 12px;
+        border-radius: 8px;
+        background: #f3f6ff;
+      }
+      .history {
+        margin-top: 12px;
+        padding-left: 18px;
+      }
+      .hint {
+        color: #5f6c89;
+        margin-bottom: 14px;
+      }
+      .welcome {
+        margin: 0 0 12px 0;
+        color: #1d2a44;
+      }
+      .error {
+        margin-top: 10px;
+        color: #b42318;
+        min-height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="login-card" class="card">
+        <h1>Onework 登录 Demo</h1>
+        <p class="hint">请输入账号密码后进入应用（演示账号：demo / 123456）</p>
+        <div class="row">
+          <input id="username-input" data-testid="username-input" placeholder="用户名" />
+        </div>
+        <div class="row">
+          <input
+            id="password-input"
+            data-testid="password-input"
+            type="password"
+            placeholder="密码"
+          />
+        </div>
+        <div class="row">
+          <button class="primary" id="login-btn" aria-label="登录">登录</button>
+        </div>
+        <div id="login-error" data-testid="login-error" class="error"></div>
+      </div>
+
+      <div id="app-card" class="card hidden">
+        <h1>Onework Electron Demo</h1>
+        <p id="welcome-text" data-testid="welcome-text" class="welcome"></p>
+        <div class="row">
+          <input data-testid="task-input" placeholder="输入任务，例如：总结今天待办" />
+          <button class="primary" id="run-btn" aria-label="运行">运行</button>
+          <button class="ghost" id="history-btn" aria-label="历史">历史</button>
+          <button class="ghost" id="logout-btn" aria-label="退出登录">退出登录</button>
+        </div>
+
+        <div data-testid="task-result" class="result">等待任务执行...</div>
+
+        <ul id="history-list" class="history">
+          <li data-testid="history-item">欢迎任务：体验 Onework Demo</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="./renderer.js"></script>
+  </body>
+</html>

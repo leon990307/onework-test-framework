@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(printf \"\\n---\\n\\n## 3. Build, Test, or Development Commands\\n\\n**No build system found.** This is a documentation-focused repository, not a software project with compilation or testing infrastructure.\\n\\n- No package.json (Node.js)\\n- No Makefile (Make/build automation)\\n- No requirements.txt (Python dependencies)\\n- No pom.xml (Maven)\\n- No Cargo.toml (Rust)\\n- No CI/CD configuration files\\n\\n**Workflow**: This is a manual documentation generation system where:\\n1. Users provide PRD and project information\\n2. Follow the guidelines in generate_test_doc.md\\n3. Generate test analysis documents using the specified structure\\n4. Output documents follow the 5-chapter format\\n\")",
+      "Bash(/d/gentestdoc/CLAUDE.md)",
+      "Bash(printf:*)",
+      "Bash(cat:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

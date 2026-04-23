@@ -1,0 +1,22 @@
+{
+  "name": "onework-ui-e2e",
+  "version": "0.1.0",
+  "private": true,
+  "description": "UI E2E test framework for Onework Electron app",
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:e2e:smoke": "playwright test tests/e2e/smoke",
+    "test:e2e:attach": "playwright test tests/e2e/attach-existing.spec.ts",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:ci": "playwright test --reporter=line,html",
+    "report:open": "playwright show-report",
+    "build:demo": "electron-builder --config electron-builder.config.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.0",
+    "@types/node": "^22.10.2",
+    "electron": "^37.2.6",
+    "electron-builder": "^26.8.1",
+    "typescript": "^5.7.2"
+  }
+}
